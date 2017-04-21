@@ -15,6 +15,7 @@
     "cheerio": "^0.22.0",
     "colors": "^1.1.2",
     "jsonsave": "^3.0.5",
-    "node-fetch": "^1.6.3"
+    "node-fetch": "^1.6.3",
+    "request": "^2.81.0"
   }
 }

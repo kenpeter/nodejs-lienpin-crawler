@@ -4,7 +4,7 @@ const colors = require('colors');
 const json = require('jsonsave');
 
 const api = require('./api');
-const { key } = require('./config');
+const { key, page } = require('./config');
 
 // 合并数组
 const cat = (...arg) => arg.reduce((sum, val) => [...sum, ...val], []);
@@ -19,7 +19,7 @@ const go = async (page) => {
     const list = $('.container .sojob-result  ul.sojob-list > li');
 
     // 整理信息
-    const res = Array.from(list.map((index, item) => {
+    return Array.from(list.map((index, item) => {
         const self = $(item);
 
         const url = self.find('.job-info > h3[title] > a').attr('href');
@@ -42,19 +42,19 @@ const go = async (page) => {
             id, url, title, condition, time, company
         };
     }));
-
-    return res;
-
 };
 
 console.time(go.name);
+// 并发请求
 Promise.all([
-    ...new Array(100).fill('').map((i, index) => go(index))
+    ...(new Array(page).fill('').map((i, index) => go(index)))
 ])
     .then(res => cat(...res))
     .then(res => {
         // save
-        json.new().$$merge(res).$$saveAs(`${__dirname}/json/test.json`);
+        json.new().$$merge(Array.from(res)).$$saveAs(`${__dirname}/json/${key}_${res.length}.json`);
+
+        console.log(`关键词：${key}, ${res.length} 条数据`);
         console.timeEnd(go.name);
     });
 
