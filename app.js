@@ -100,7 +100,7 @@ Promise.all([ // here one array........
 .then(res => {
   // res is double array [['a', [b]]]
   // console.log(res);
-  cat(...res)
+  return cat(...res)
 })
 .then(res => {
   console.log(res);
