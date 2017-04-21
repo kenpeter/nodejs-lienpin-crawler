@@ -47,6 +47,7 @@ const go = async (page) => {
 console.time(go.name);
 // 并发请求
 Promise.all([
+    // 构造数组 => go(0), go(1) ...
     ...(new Array(page).fill('').map((i, index) => go(index)))
 ])
     .then(res => cat(...res))
