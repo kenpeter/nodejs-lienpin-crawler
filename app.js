@@ -97,13 +97,13 @@ Promise.all([ // here one array........
   // index also matching page num
   ...(new Array(page).fill('').map((i, index) => go(index))) // it just promise {pending}, promise {pending}, etc...
 ])
-.then(res => {
+.then(res =>
   // res is double array [['a', [b]]]
   // console.log(res);
-  return cat(...res)
-})
+  cat(...res)
+)
 .then(res => {
-  console.log(res);
+  // console.log(res);
 
   // save
   json.new().$$merge(Array.from(res)).$$saveAs(`${__dirname}/json/${key}_${res.length}_${Date.now()}.json`);
