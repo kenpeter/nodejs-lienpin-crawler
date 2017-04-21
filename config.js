@@ -2,5 +2,5 @@
 
 module.exports = {
     key: '前端',
-    page: 2,
+    page: 100,
 };
