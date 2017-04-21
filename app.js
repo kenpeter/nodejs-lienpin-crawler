@@ -52,7 +52,7 @@ Promise.all([
     .then(res => cat(...res))
     .then(res => {
         // save
-        json.new().$$merge(Array.from(res)).$$saveAs(`${__dirname}/json/${key}_${res.length}.json`);
+        json.new().$$merge(Array.from(res)).$$saveAs(`${__dirname}/json/${key}_${res.length}_${Date.now()}.json`);
 
         console.log(`关键词：${key}, ${res.length} 条数据`);
         console.timeEnd(go.name);
