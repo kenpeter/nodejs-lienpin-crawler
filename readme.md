@@ -1,15 +1,15 @@
 
-## Nodejs 小爬虫 - 抓取"猎聘网"招聘列表
+### Nodejs 小爬虫 - 抓取"猎聘网"招聘列表
 
-**use**
+#### use
 
-```js
+```shell
 npm install
 
 node app.js
 ```
 
-**config**
+#### config
 
 ```js
 module.exports = {
@@ -18,9 +18,9 @@ module.exports = {
 };
 ```
 
-**输出**
+#### output
 
-```js
+```shell
 关键词：前端, 3996 条数据
 go: 5222.149ms
 ```
